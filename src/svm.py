@@ -18,3 +18,6 @@ clf.fit(x_train, y_train)
 predicted = clf.predict(x_test)
 acc = metrics.accuracy_score(y_test, predicted)
 print(acc)
+
+for x in range(len(predicted)):
+    print("Predicted: ", classes[predicted[x]], "Actual: ", classes[y_test[x]] )
