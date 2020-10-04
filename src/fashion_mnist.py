@@ -1,4 +1,11 @@
-import tensorflow as tf
+'''
+Fashion MNIST
+- 70K images
+- 10 categories
+- Images are 28*28 (less data to use, faster)
+- Can train a neural net
+'''
+
 from tensorflow import keras
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,6 +15,8 @@ data = keras.datasets.fashion_mnist
 (train_images, train_labels), (test_images, test_labels) = data.load_data()
 # prints (60000, 28, 28)
 print(train_images.shape)
+# Prints (10000, 28, 28) ie. among 70K, 60 are training data and 10K are test data.
+print(test_images.shape)
 print(test_labels)
 class_names = ['T-shirt/Top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 for x in test_labels:
@@ -26,10 +35,10 @@ model.fit(train_images, train_labels, epochs=5)
 test_loss, test_acc = model.evaluate(test_images, test_labels)
 print(test_acc)
 
-prediction = model.predict(test_images)
-for i in range(10):
-    plt.grid(False)
-    plt.imshow(test_images[i], cmap=plt.cm.binary)
-    plt.xlabel("Actual:"+ class_names[test_labels[i]])
-    plt.title("Predicted: "+ class_names[np.argmax(prediction[i])])
-    plt.show()
+# prediction = model.predict(test_images)
+# for i in range(10):
+#     plt.grid(False)
+#     plt.imshow(test_images[i], cmap=plt.cm.binary)
+#     plt.xlabel("Actual:"+ class_names[test_labels[i]])
+#     plt.title("Predicted: "+ class_names[np.argmax(prediction[i])])
+#     plt.show()
